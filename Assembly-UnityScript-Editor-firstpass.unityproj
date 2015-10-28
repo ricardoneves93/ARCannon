@@ -6,7 +6,7 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{0AA8F249-4899-4A02-850D-A8EFA284B332}</ProjectGuid>
+	<ProjectGuid>{55BE0291-9FA8-C576-023E-F2966137322F}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<AssemblyName>Assembly-UnityScript-Editor-firstpass</AssemblyName>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_2_1;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;VUFORIA_ANDROID_SETTINGS;ENABLE_DUCK_TYPING</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_2_0;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;VUFORIA_ANDROID_SETTINGS;ENABLE_DUCK_TYPING</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -51,6 +51,7 @@
      <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\StreamingAssets\QCAR\VR.xml" />
      <None Include="Assets\Vuforia\Shaders\RenderVideoBackground.shader" />
+     <None Include="Assets\StreamingAssets\QCAR\VR 2.xml" />
      <None Include="Assets\Vuforia\Shaders\VideoBackground.shader" />
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\StreamingAssets\QCAR\VR 1.xml" />
@@ -77,13 +78,13 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>A:/Documentos/unity_projects/ArCannon/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>C:/Users/ricardo/Documents/Workspace/ARCannon/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="Qualcomm.Vuforia.UnityExtensions.Editor">
- <HintPath>A:/Documentos/unity_projects/ArCannon/Assets/Vuforia/Editor/Scripts/Qualcomm.Vuforia.UnityExtensions.Editor.dll</HintPath>
+ <HintPath>C:/Users/ricardo/Documents/Workspace/ARCannon/Assets/Vuforia/Editor/Scripts/Qualcomm.Vuforia.UnityExtensions.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Qualcomm.Vuforia.UnityExtensions">
- <HintPath>A:/Documentos/unity_projects/ArCannon/Assets/Vuforia/Scripts/Internal/Qualcomm.Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>C:/Users/ricardo/Documents/Workspace/ARCannon/Assets/Vuforia/Scripts/Internal/Qualcomm.Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -101,10 +102,10 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/metrosupport/UnityEditor.Metro.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Tizen.Extensions">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/TizenPlayer/UnityEditor.Tizen.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/TizenPlayer/TizenPlayer/UnityEditor.Tizen.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.SamsungTV.Extensions">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/stvplayer/UnityEditor.SamsungTV.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/stvplayer/STVPlayer/UnityEditor.SamsungTV.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WebGL.Extensions">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/webglsupport/UnityEditor.WebGL.Extensions.dll</HintPath>
