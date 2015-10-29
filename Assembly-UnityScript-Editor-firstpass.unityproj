@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Plugins\Editor\Unzip.js" />
      <None Include="Assets\coastal_gun_battery\coastal_gun_battery_notes.txt" />
+     <None Include="Assets\Breakable Glass\Shaders\SimpleGlass.shader" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\StreamingAssets\QCAR\VR.xml" />
@@ -56,6 +57,7 @@
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\StreamingAssets\QCAR\VR 1.xml" />
      <None Include="Assets\readme_SDK.txt" />
+     <None Include="Assets\Breakable Glass\README.txt" />
      <None Include="Assets\Vuforia\Editor\WebcamProfiles\profiles.xml" />
      <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
      <None Include="Assets\Vuforia\Shaders\BrightTexture.shader" />

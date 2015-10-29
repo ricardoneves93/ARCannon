@@ -45,6 +45,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Breakable Glass\Scripts\BreakGlass.cs" />
+     <Compile Include="Assets\Breakable Glass\Scripts\GlassBreaker.cs" />
      <Compile Include="Assets\CNControls\Examples\Scenes\2D\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\CNControls\Examples\Scenes\2D\Scripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\CNControls\Examples\Scenes\2D\Scripts\PlatformerCharacter2D.cs" />
@@ -109,6 +111,7 @@
      <Compile Include="Assets\Vuforia\Scripts\WireframeTrackableEventHandler.cs" />
      <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
      <None Include="Assets\coastal_gun_battery\coastal_gun_battery_notes.txt" />
+     <None Include="Assets\Breakable Glass\Shaders\SimpleGlass.shader" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\StreamingAssets\QCAR\VR.xml" />
@@ -118,6 +121,7 @@
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\StreamingAssets\QCAR\VR 1.xml" />
      <None Include="Assets\readme_SDK.txt" />
+     <None Include="Assets\Breakable Glass\README.txt" />
      <None Include="Assets\Vuforia\Editor\WebcamProfiles\profiles.xml" />
      <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
      <None Include="Assets\Vuforia\Shaders\BrightTexture.shader" />
