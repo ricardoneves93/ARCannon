@@ -15,7 +15,7 @@ public class CannonScript : MonoBehaviour {
 	
 	
 	void Start() {
-		
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		rateOfFire = 0.5F;
 		speed = 15;
 		fireDelay = 0.0F;

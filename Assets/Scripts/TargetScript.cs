@@ -14,6 +14,7 @@ public class TargetScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 
 		//Get all target objects on scene
 		GameObject[] gameBarrels1;
@@ -27,7 +28,7 @@ public class TargetScript : MonoBehaviour {
 		print ("Barrel 1" + gameBarrels1.Length);
 
 		foreach (GameObject barrel1 in gameBarrels1) {
-			barrels1.Add(new Barrel(barrel1, 5300.0F));
+			barrels1.Add(new Barrel(barrel1, 50.0F));
 		}
 
 		foreach (GameObject barrel2 in gameBarrels2) {
@@ -43,21 +44,31 @@ public class TargetScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		GameObject explosion;
 
 		// type 1 barrel
 		foreach (Barrel barrel1 in barrels1) {
-			if(barrel1.getActive()) {
-				Rigidbody rb = barrel1.getGameObject().GetComponent<Rigidbody> ();
-				float force = 0.5f * rb.mass * Mathf.Pow(rb.velocity.magnitude,2);
-				barrel1.addForce(force);
-				print ("Accumulator force: " + barrel1.getForceAcc());
-				if(!barrel1.checkLimit()) {
+			explosion = barrel1.getGameObject ().transform.FindChild ("Explosion").gameObject;
+			if (barrel1.getActive () && !barrel1.getPlayed ()) {
+				Rigidbody rb = barrel1.getGameObject ().GetComponent<Rigidbody> ();
+				float force = 0.5f * rb.mass * Mathf.Pow (rb.velocity.magnitude, 2);
+				barrel1.addForce (force);
+				print ("Accumulator force: " + barrel1.getForceAcc ());
+				if (barrel1.checkLimit ()) {
 					// Deactivate object
-					GameObject explosion = barrel1.getGameObject().transform.FindChild("Explosion").gameObject;
-					Instantiate(explosion);
-					barrel1.getGameObject().SetActive(false);
-			}
+					explosion.GetComponent<ParticleSystem> ().enableEmission = true;
+					print ("Duration " + explosion.GetComponent<ParticleSystem> ().duration);
 
+					explosion.GetComponent<ParticleSystem> ().Play ();
+					barrel1.setPlayed (true);
+					
+				}
+
+			}
+			else if(barrel1.getPlayed() && !explosion.GetComponent<ParticleSystem>().IsAlive()){
+				barrel1.getGameObject().SetActive(false);
+				barrel1.setActive(false);
+			}
 		}
 
 		// type 2 barrel
@@ -92,7 +103,6 @@ public class TargetScript : MonoBehaviour {
 
 	}
 }
-}
 
 
 
@@ -101,12 +111,14 @@ public class Barrel {
 	private bool active;
 	private float forceAcc;
 	private float forceLimit;
+	private bool played;
 
 	public Barrel(GameObject gameObject, float forceLimit) {
 		this.barrel = gameObject;
 		this.forceAcc = 0.0F;
 		this.forceLimit = forceLimit;
 		this.active = true;
+		this.played = false;
 
 	}
 
@@ -115,9 +127,7 @@ public class Barrel {
 	}
 
 	public bool checkLimit() {
-		if (forceAcc >= forceLimit)
-			this.active = false;
-		return active;
+		return (forceAcc >= forceLimit);
 	}
 
 	public GameObject getGameObject() {
@@ -132,4 +142,16 @@ public class Barrel {
 		return this.active;
 	}
 
+	public void setActive(bool active) {
+		this.active = active;
+	}
+
+	public bool getPlayed(){
+		return this.played;
+	}
+
+	public void setPlayed(bool played) {
+		this.played = played;
+	}
+	
 }
