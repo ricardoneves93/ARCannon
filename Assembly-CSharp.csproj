@@ -89,10 +89,14 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\TestScene\DetonatorTest.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\TestScene\TouchToMouse.cs" />
+     <Compile Include="Assets\Scripts\BarrelClass.cs" />
      <Compile Include="Assets\Scripts\CannonBallScript.cs" />
      <Compile Include="Assets\Scripts\CannonScript.cs" />
+     <Compile Include="Assets\Scripts\EasyBarrelScript.cs" />
+     <Compile Include="Assets\Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\HardBarrelScript.cs" />
+     <Compile Include="Assets\Scripts\MediumBarrelScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
-     <Compile Include="Assets\Scripts\TargetScript.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />

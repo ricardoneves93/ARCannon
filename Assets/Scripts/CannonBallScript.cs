@@ -8,4 +8,5 @@ public class CannonBallScript : MonoBehaviour {
 	void Update () {
 		Destroy (gameObject, 20);
 	}
+
 }
