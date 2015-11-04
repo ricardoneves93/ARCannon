@@ -2,12 +2,13 @@
 using System.Collections;
 
 /*Abstract class that will hold the generic Barrel object*/
-public abstract class Barrel {
+public abstract class Barrel : MonoBehaviour{
 	protected GameObject barrel;
 	protected GameObject explosion;
 	protected bool active;
 	protected float forceAcc;
 	protected float forceLimit;
+	protected int scoreValue;
 	protected bool played;
 	
 	
@@ -19,7 +20,15 @@ public abstract class Barrel {
 		this.played = false;
 		
 	}
-	
+
+	public void desactivateObject() {
+		
+		//yield return new WaitForSeconds(1.167f);
+		//barrel.SetActive (false);
+		//GameObject.Destroy(barrel.transform.parent.gameObject);
+		Debug.Log ("Desactivate");
+	}
+
 	public void addForce(GameObject collidedWith) {
 		// Force calculations
 								// Velocity of the barrel						// Velocity of the object that collided
@@ -47,7 +56,14 @@ public abstract class Barrel {
 		if (checkLimit ()) {
 			explosion.GetComponent<ParticleSystem> ().enableEmission = true;
 			explosion.GetComponent<ParticleSystem> ().Play ();
-			barrel.SetActive (false);
+
+			// Give the score to the player that is playing
+			GameMaster.getPlayingPlayer().addScore(this.scoreValue);
+			//Invoke("desactivateObject", 2.0f);
+
+
+			//StartCoroutine(desactivateObject());
+			//barrel.SetActive (false);
 
 			// Add timeout when animation ends to destroy gameObject
 			//GameObject.Destroy(barrel.transform.parent.gameObject);
@@ -55,6 +71,7 @@ public abstract class Barrel {
 
 	}
 	
+
 	public bool checkLimit() {
 		return (forceAcc >= forceLimit);
 	}
@@ -82,7 +99,7 @@ public abstract class Barrel {
 	public void setPlayed(bool played) {
 		this.played = played;
 	}
-	
+
 	
 }
 
@@ -92,6 +109,7 @@ public class Easy : Barrel {
 	/*calls allways parent constructor*/
 	public Easy(GameObject gameObject, GameObject explosion) : base(gameObject, explosion) {
 		this.forceLimit = 650000.0F;
+		this.scoreValue = 10;
 	}
 	
 }
@@ -101,6 +119,7 @@ public class Medium : Barrel {
 	/*calls allways parent constructor*/
 	public Medium(GameObject gameObject, GameObject explosion) : base(gameObject, explosion) {
 		this.forceLimit = 700000.0F;
+		this.scoreValue = 15;
 	}
 	
 }
@@ -110,6 +129,7 @@ public class Hard : Barrel {
 	/*calls allways parent constructor*/
 	public Hard(GameObject gameObject, GameObject explosion) : base(gameObject, explosion) {
 		this.forceLimit = 800000.0F;
+		this.scoreValue = 20;
 	}
 	
 }

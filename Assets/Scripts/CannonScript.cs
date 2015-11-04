@@ -36,6 +36,31 @@ public class CannonScript : MonoBehaviour {
 			Vector3 dir = aim.transform.forward;
 			Rigidbody rb = clone.GetComponent<Rigidbody>();
 			rb.velocity = new Vector3(dir.x * speed, dir.y * speed, dir.z * speed);
+
+			// Removes a ball from player that is playing
+			GameMaster.RemovePlayerBall();
+
+			bool turn1 = GameMaster.player1.getIsTurn();
+			int balls1 = GameMaster.player1.getBallsAvailable();
+			int score1 = GameMaster.player1.getScore();
+
+			bool turn2 = GameMaster.player2.getIsTurn();
+			int balls2 = GameMaster.player2.getBallsAvailable();
+			int score2 = GameMaster.player2.getScore();
+
+
+			/*
+			Debug.Log ("Player 1 turn: " + turn1);
+			Debug.Log ("Player 1 Balls: " + balls1);
+			Debug.Log ("Player 1 Score: " + score1);
+
+			Debug.Log ("-----------------------------------");
+			Debug.Log ("Player 2 turn: " + turn2);
+			Debug.Log ("Player 2 Balls: " + balls2);
+			Debug.Log ("Player 2 Score: " + score2);
+			*/
+			
+
 			
 		}
 

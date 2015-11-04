@@ -7,9 +7,8 @@ public class MediumBarrelScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject explosion = this.gameObject.transform.parent.FindChild ("Explosion").gameObject;
+		GameObject explosion = this.gameObject.transform.FindChild ("Explosion").gameObject;
 		barrel = new Medium (this.gameObject, explosion);
-		//GameMaster.barrels.Add(barrel);
 	}
 	
 	// Update is called once per frame
