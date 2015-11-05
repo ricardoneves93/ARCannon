@@ -8,7 +8,10 @@ public class EasyBarrelScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject explosion = this.gameObject.transform.FindChild ("Explosion").gameObject;
-		barrel = new Easy(this.gameObject, explosion);
+		//barrel = new Easy(this.gameObject, explosion);
+
+		barrel = this.gameObject.AddComponent<Easy>() as Easy;
+		barrel.construct (this.gameObject, explosion);
 	}
 	
 	// Update is called once per frame

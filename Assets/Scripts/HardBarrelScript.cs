@@ -8,7 +8,8 @@ public class HardBarrelScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject explosion = this.gameObject.transform.FindChild ("Explosion").gameObject;
-		barrel = new Hard (this.gameObject, explosion);
+		barrel = this.gameObject.AddComponent<Hard>() as Hard;
+		barrel.construct (this.gameObject, explosion);
 	}
 	
 	// Update is called once per frame

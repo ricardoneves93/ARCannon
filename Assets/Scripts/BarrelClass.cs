@@ -11,22 +11,12 @@ public abstract class Barrel : MonoBehaviour{
 	protected int scoreValue;
 	protected bool played;
 	
-	
-	public Barrel(GameObject gameObject, GameObject explosion) {
-		this.barrel = gameObject;
-		this.explosion = explosion;
-		this.forceAcc = 0.0F;
-		this.active = true;
-		this.played = false;
-		
-	}
+	public virtual void construct (GameObject gameObject, GameObject explosion){}
 
 	public void desactivateObject() {
-		
-		//yield return new WaitForSeconds(1.167f);
-		//barrel.SetActive (false);
-		//GameObject.Destroy(barrel.transform.parent.gameObject);
-		Debug.Log ("Desactivate");
+
+		barrel.SetActive (false);
+		GameObject.Destroy(barrel.transform.parent.gameObject);
 	}
 
 	public void addForce(GameObject collidedWith) {
@@ -59,7 +49,7 @@ public abstract class Barrel : MonoBehaviour{
 
 			// Give the score to the player that is playing
 			GameMaster.getPlayingPlayer().addScore(this.scoreValue);
-			//Invoke("desactivateObject", 2.0f);
+			Invoke("desactivateObject", 0.8f);
 
 
 			//StartCoroutine(desactivateObject());
@@ -107,7 +97,12 @@ public abstract class Barrel : MonoBehaviour{
 public class Easy : Barrel {
 	
 	/*calls allways parent constructor*/
-	public Easy(GameObject gameObject, GameObject explosion) : base(gameObject, explosion) {
+	public override void construct(GameObject gameObject, GameObject explosion){
+		this.barrel = gameObject;
+		this.explosion = explosion;
+		this.forceAcc = 0.0F;
+		this.active = true;
+		this.played = false;
 		this.forceLimit = 650000.0F;
 		this.scoreValue = 10;
 	}
@@ -117,7 +112,12 @@ public class Easy : Barrel {
 public class Medium : Barrel {
 	
 	/*calls allways parent constructor*/
-	public Medium(GameObject gameObject, GameObject explosion) : base(gameObject, explosion) {
+	public override void construct(GameObject gameObject, GameObject explosion) {
+		this.barrel = gameObject;
+		this.explosion = explosion;
+		this.forceAcc = 0.0F;
+		this.active = true;
+		this.played = false;
 		this.forceLimit = 700000.0F;
 		this.scoreValue = 15;
 	}
@@ -127,7 +127,12 @@ public class Medium : Barrel {
 public class Hard : Barrel {
 	
 	/*calls allways parent constructor*/
-	public Hard(GameObject gameObject, GameObject explosion) : base(gameObject, explosion) {
+	public override void construct(GameObject gameObject, GameObject explosion) {
+		this.barrel = gameObject;
+		this.explosion = explosion;
+		this.forceAcc = 0.0F;
+		this.active = true;
+		this.played = false;
 		this.forceLimit = 800000.0F;
 		this.scoreValue = 20;
 	}
