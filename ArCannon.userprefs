@@ -1,16 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameMaster.cs">
     <Files>
-      <File FileName="Assets\Scripts\BarrelClass.cs" Line="61" Column="4" />
-      <File FileName="Assets\Scripts\GameMaster.cs" Line="10" Column="36" />
-      <File FileName="Assets\Scripts\Player.cs" Line="79" Column="44" />
-      <File FileName="a:\Documentos\unity_projects\ArCannon\Assets\Scripts\EasyBarrelScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BarrelClass.cs" Line="130" Column="23" />
+      <File FileName="Assets\Scripts\GameMaster.cs" Line="105" Column="38" />
+      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MediumBarrelScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HardBarrelScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HardBarrelScript.cs" Line="18" Column="3" />
       <File FileName="Assets\Scripts\CannonBallScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CannonScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MainScript.cs" Line="14" Column="17" />
+      <File FileName="Assets\Scripts\MainScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" Line="107" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

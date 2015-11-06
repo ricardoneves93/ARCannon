@@ -13,9 +13,9 @@ public abstract class Barrel : MonoBehaviour{
 	
 	public virtual void construct (GameObject gameObject, GameObject explosion){}
 
-	public void desactivateObject() {
+	private void desactivateObject() {
 
-		barrel.SetActive (false);
+		this.active = false;
 		GameObject.Destroy(barrel.transform.parent.gameObject);
 	}
 
@@ -40,8 +40,7 @@ public abstract class Barrel : MonoBehaviour{
 		impactForce *= Mathf.Sign (impactForce);
 
 		this.forceAcc += impactForce;
-
-		Debug.Log("Impact force " + this.forceAcc);
+		
 
 		if (checkLimit ()) {
 			explosion.GetComponent<ParticleSystem> ().enableEmission = true;
@@ -50,13 +49,6 @@ public abstract class Barrel : MonoBehaviour{
 			// Give the score to the player that is playing
 			GameMaster.getPlayingPlayer().addScore(this.scoreValue);
 			Invoke("desactivateObject", 0.8f);
-
-
-			//StartCoroutine(desactivateObject());
-			//barrel.SetActive (false);
-
-			// Add timeout when animation ends to destroy gameObject
-			//GameObject.Destroy(barrel.transform.parent.gameObject);
 		}
 
 	}
@@ -105,6 +97,7 @@ public class Easy : Barrel {
 		this.played = false;
 		this.forceLimit = 650000.0F;
 		this.scoreValue = 10;
+		GameMaster.barrels.Add (this);
 	}
 	
 }
@@ -118,8 +111,9 @@ public class Medium : Barrel {
 		this.forceAcc = 0.0F;
 		this.active = true;
 		this.played = false;
-		this.forceLimit = 700000.0F;
+		this.forceLimit = 650000.0F;
 		this.scoreValue = 15;
+		GameMaster.barrels.Add (this);
 	}
 	
 }
@@ -133,8 +127,9 @@ public class Hard : Barrel {
 		this.forceAcc = 0.0F;
 		this.active = true;
 		this.played = false;
-		this.forceLimit = 800000.0F;
+		this.forceLimit = 10.0F;
 		this.scoreValue = 20;
+		GameMaster.barrels.Add (this);
 	}
 	
 }

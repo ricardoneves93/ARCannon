@@ -1,42 +1,18 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-32bit-1-8668
+Pipe name: \\.\pipe\UnityShaderCompiler-32bit-1-8284
 Cmd: getPlatforms
 Cmd: preprocess
   insize=683 outsize=683 ok=1
 Cmd: preprocess
   insize=997 outsize=997 ok=1
 Cmd: preprocess
-  insize=1312 outsize=1942 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=8220 outsize=5190 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=8220 outsize=3736 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=5551 outsize=4272 kw=POINT pd= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=5551 outsize=4280 kw=POINT pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4591 outsize=4069 kw= pd= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=4591 outsize=1875 kw= pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=7054 outsize=4329 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=7054 outsize=2200 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=8069 outsize=5328 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=8069 outsize=2948 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4429 outsize=4662 kw= pd= ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=4429 outsize=1745 kw= pd= ok=1
+  insize=1263 outsize=1921 ok=1
 Cmd: preprocess
   insize=534 outsize=534 ok=1
 Cmd: preprocess
   insize=944 outsize=276 ok=1
 Cmd: preprocess
-  insize=1434 outsize=1434 ok=1
+  insize=1390 outsize=1390 ok=1
 Cmd: preprocess
   insize=576 outsize=576 ok=1
 Cmd: preprocess
@@ -47,12 +23,16 @@ Cmd: compileSnippet
   error: 2 plat 4 at (37): 'tex2Dproj': no matching 2 parameter intrinsic function; Possible intrinsic functions are: tex2Dproj(sampler2D, float4|half4|min10float4|min16float4)\nCompiling Vertex program
   api=4 type=0 insize=1678 outsize=0 kw= pd= ok=0
 Cmd: compileSnippet
-  api=4 type=0 insize=5551 outsize=4272 kw=DIRECTIONAL pd= ok=1
+  api=4 type=0 insize=6895 outsize=5117 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=5551 outsize=3541 kw=DIRECTIONAL pd= ok=1
+  api=4 type=0 insize=7222 outsize=6945 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=8220 outsize=5580 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+  api=4 type=0 insize=7608 outsize=6198 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=8220 outsize=4044 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+  api=4 type=0 insize=8192 outsize=6604 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7222 outsize=5889 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+  api=4 type=0 insize=982 outsize=6116 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON _NORMALMAP pd= ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1482 outsize=1290 kw=SOFTPARTICLES_OFF pd= ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1482 outsize=949 kw=SOFTPARTICLES_OFF pd= ok=1
