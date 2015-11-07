@@ -10,12 +10,12 @@ public abstract class Barrel : MonoBehaviour{
 	protected float forceLimit;
 	protected int scoreValue;
 	protected bool played;
+	protected bool isMoving;
 	
 	public virtual void construct (GameObject gameObject, GameObject explosion){}
 
 	private void desactivateObject() {
-
-		this.active = false;
+	
 		GameObject.Destroy(barrel.transform.parent.gameObject);
 	}
 
@@ -42,10 +42,10 @@ public abstract class Barrel : MonoBehaviour{
 		this.forceAcc += impactForce;
 		
 
-		if (checkLimit ()) {
+		if (checkLimit () && this.active) {
 			explosion.GetComponent<ParticleSystem> ().enableEmission = true;
 			explosion.GetComponent<ParticleSystem> ().Play ();
-
+			this.active = false;
 			// Give the score to the player that is playing
 			GameMaster.getPlayingPlayer().addScore(this.scoreValue);
 			Invoke("desactivateObject", 0.8f);
@@ -82,6 +82,13 @@ public abstract class Barrel : MonoBehaviour{
 		this.played = played;
 	}
 
+	public bool getIsMoving() {
+		return this.isMoving;
+	}
+
+	public void setIsMoving(bool isMoving) {
+		this.isMoving = isMoving;
+	}
 	
 }
 
@@ -127,7 +134,7 @@ public class Hard : Barrel {
 		this.forceAcc = 0.0F;
 		this.active = true;
 		this.played = false;
-		this.forceLimit = 10.0F;
+		this.forceLimit = 650000.0F;
 		this.scoreValue = 20;
 		GameMaster.barrels.Add (this);
 	}

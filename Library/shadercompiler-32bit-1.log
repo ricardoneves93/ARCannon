@@ -1,38 +1,19 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-32bit-1-8284
+Pipe name: \\.\pipe\UnityShaderCompiler-32bit-1-8944
 Cmd: getPlatforms
-Cmd: preprocess
-  insize=683 outsize=683 ok=1
-Cmd: preprocess
-  insize=997 outsize=997 ok=1
-Cmd: preprocess
-  insize=1263 outsize=1921 ok=1
-Cmd: preprocess
-  insize=534 outsize=534 ok=1
-Cmd: preprocess
-  insize=944 outsize=276 ok=1
-Cmd: preprocess
-  insize=1390 outsize=1390 ok=1
-Cmd: preprocess
-  insize=576 outsize=576 ok=1
-Cmd: preprocess
-  insize=923 outsize=923 ok=1
-Cmd: preprocess
-  insize=2589 outsize=1216 ok=1
 Cmd: compileSnippet
-  error: 2 plat 4 at (37): 'tex2Dproj': no matching 2 parameter intrinsic function; Possible intrinsic functions are: tex2Dproj(sampler2D, float4|half4|min10float4|min16float4)\nCompiling Vertex program
-  api=4 type=0 insize=1678 outsize=0 kw= pd= ok=0
+  api=4 type=0 insize=7550 outsize=5515 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=6895 outsize=5117 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
+  api=4 type=1 insize=7550 outsize=2647 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7222 outsize=6945 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
+  api=4 type=0 insize=4937 outsize=4020 kw=POINT pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7608 outsize=6198 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
+  api=4 type=1 insize=4937 outsize=2736 kw=POINT pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=8192 outsize=6604 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
+  api=4 type=0 insize=7550 outsize=6929 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=982 outsize=6116 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON _NORMALMAP pd= ok=1
+  api=4 type=0 insize=4937 outsize=4020 kw=SPOT pd= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=1482 outsize=1290 kw=SOFTPARTICLES_OFF pd= ok=1
+  api=4 type=1 insize=4937 outsize=3232 kw=SPOT pd= ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=1482 outsize=949 kw=SOFTPARTICLES_OFF pd= ok=1
+  api=4 type=0 insize=7550 outsize=6539 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1

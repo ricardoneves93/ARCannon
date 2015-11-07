@@ -26,6 +26,23 @@ public class MainScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Player player;
+
+		if (GameMaster.player1.getIsTurn ())
+			player = GameMaster.player1;
+		else
+			player = GameMaster.player2;
+
+
+
+
+		// If no balls available
+		if (player.getBallsAvailable () == 0 && !GameMaster.isChangingLevel) {
+			if (GameMaster.nothingMoving ()) {
+				GameMaster.changePlayersTurns ();
+			}
+		} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {
+			GameMaster.changePlayersTurns ();
+		}
 	}
 }

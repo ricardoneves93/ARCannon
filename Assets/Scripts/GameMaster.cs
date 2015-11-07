@@ -11,8 +11,10 @@ public class GameMaster : MonoBehaviour {
 	public static int currentScene = 0;
 	public static int resultPlayer1 = 0;
 	public static int resultPlayer2 = 0;
+	public static int levelTime = 0;
 	public static Text result;
 	public static string[] scenes;
+	public static bool isChangingLevel = false;
 	public static List<Barrel> barrels = new List<Barrel> ();
 
 	// Create the players
@@ -43,68 +45,42 @@ public class GameMaster : MonoBehaviour {
 		return player2;
 	}
 
-	private static void changePlayersTurns() {
+	public static void changePlayersTurns() {
 		player1.changeTurn ();
 		player2.changeTurn ();
+		if (GameMaster.levelTime == 0) {
+			Debug.Log ("Pilas0");
+			GameMaster.levelTime = 1;
+			// reset barrels list
+			GameMaster.barrels = new List<Barrel> ();
+			// reset Scene
+			Destroy (GameObject.FindGameObjectWithTag ("target"));
+			GameMaster.isChangingLevel = true;
+			Instantiate (AssetDatabase.LoadAssetAtPath ("Assets/Prefabs/" + GameMaster.scenes [GameMaster.currentScene] + ".prefab", typeof(GameObject)));
+			GameMaster.isChangingLevel = false;
+		} else {
+			Debug.Log("Pilas1");
+			GameMaster.currentScene++;
+			GameMaster.levelTime = 0;
+			// reset barrels list
+			GameMaster.barrels = new List<Barrel> ();
+			// reset Scene
+			Destroy(GameObject.FindGameObjectWithTag("target"));
+			GameMaster.isChangingLevel = true;
+			Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
+			GameMaster.isChangingLevel = false;
+		}
+			
+		
 		updateResultText (GameMaster.player1.getScore (), GameMaster.player2.getScore ());
 	}
 
 	// Called everytime player shoots
 	public static void RemovePlayerBall(){
-		if (player1.getIsTurn ()) {
+		if (player1.getIsTurn ())
 			player1.removePlayerBall ();
-			if (player1.getBallsAvailable () == 0) {
-				// change turns
-				GameMaster.changePlayersTurns ();
-				// reset barrels list
-				GameMaster.barrels = new List<Barrel> ();
-				// reset Scene
-				Destroy(GameObject.FindGameObjectWithTag("target"));
-				Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
+		else player2.removePlayerBall ();
 
-			} else if( GameMaster.getActiveBarrels() == 0){
-				// change turns
-				GameMaster.changePlayersTurns ();
-				// reset barrels list
-				GameMaster.barrels = new List<Barrel> ();
-				// reset Scene
-				Destroy(GameObject.FindGameObjectWithTag("target"));
-				Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
-			}
-		} else if (player2.getIsTurn ()) {
-			player2.removePlayerBall ();
-			if (player2.getBallsAvailable () == 0) {
-				// update result variables
-				if(GameMaster.player1.getScore() > GameMaster.player2.getScore())
-					GameMaster.resultPlayer1++;
-				else if(GameMaster.player2.getScore() > GameMaster.player1.getScore())
-					GameMaster.resultPlayer2++;
-				else {
-					GameMaster.resultPlayer1++;
-					GameMaster.resultPlayer2++;
-				}
-				// change turns
-				GameMaster.changePlayersTurns ();
-				// reset barrels list
-				GameMaster.barrels = new List<Barrel> ();
-				// Change to next scene
-				if(GameMaster.currentScene < 4){
-					GameMaster.currentScene++;
-					Destroy(GameObject.FindGameObjectWithTag("target"));
-					Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
-
-				} else {
-					// Anounce the winner
-				}
-
-
-			} else if( GameMaster.getActiveBarrels() == 0){
-				GameMaster.currentScene++;
-				Destroy(GameObject.FindGameObjectWithTag("target"));
-				Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
-				GameMaster.changePlayersTurns ();
-			}
-		}
 	}
 
 	public static int getActiveBarrels() {
@@ -121,5 +97,18 @@ public class GameMaster : MonoBehaviour {
 	private static void updateResultText(int score1, int score2) {
 		GameMaster.result.text = resultPlayer1.ToString () + "-" + resultPlayer2.ToString ();
 	}
+
+	public static bool nothingMoving(){
+		for (int i = 0; i < GameMaster.barrels.Count; i++) {
+			if(GameMaster.barrels[i].getActive()){
+				if(GameMaster.barrels[i].getIsMoving()){
+					Debug.Log("Moving object" + GameMaster.barrels[i].gameObject.name);
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 }
 

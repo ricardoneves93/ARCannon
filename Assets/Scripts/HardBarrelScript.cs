@@ -14,7 +14,7 @@ public class HardBarrelScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		barrel.setIsMoving(!this.GetComponent<Rigidbody> ().IsSleeping ());
 	}
 
 	void OnCollisionEnter(Collision col){
