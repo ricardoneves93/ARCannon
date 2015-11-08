@@ -9,6 +9,7 @@ public class MainScript : MonoBehaviour {
 	public Text player1, player2;
 	public Text result;
 	public RawImage imageBalls;
+	public GameObject[] levels;
 
 	string[] scenes = {"Level1", "Level2", "Level3", "Level4", "Level5"};
 
@@ -17,6 +18,7 @@ public class MainScript : MonoBehaviour {
 
 		GameMaster.result = this.result;
 		GameMaster.scenes = this.scenes;
+		GameMaster.levels = this.levels;
 		GameMaster.imageBalls = this.imageBalls;
 		GameMaster.player1.setLabels (score1, player1);
 		GameMaster.player2.setLabels (score2, player2);
