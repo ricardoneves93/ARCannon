@@ -25,7 +25,8 @@ public class CannonScript : MonoBehaviour {
 	
 	
 	void Update() {
-		
+
+		// Fire cannon
 		if(CnInputManager.GetButton("Jump") && Time.time > fireDelay) {
 
 			if(GameMaster.getPlayingPlayer().getBallsAvailable() > 0){
@@ -37,6 +38,8 @@ public class CannonScript : MonoBehaviour {
 				Vector3 dir = aim.transform.forward;
 				Rigidbody rb = clone.GetComponent<Rigidbody>();
 				rb.velocity = new Vector3(dir.x * speed, dir.y * speed, dir.z * speed);
+
+				GetComponent<AudioSource>().Play();
 				
 				// Removes a ball from player that is playing
 				GameMaster.RemovePlayerBall();

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.IO;
 
 public class Player {
 	private int[] score = new int[5];
@@ -46,7 +47,16 @@ public class Player {
 
 	public void removePlayerBall() {
 		this.ballsAvailable[GameMaster.currentScene]--;
-		//this.ballsText.text = "Balls left: " + ballsAvailable[GameMaster.currentScene].ToString ();
+
+		Texture2D texture = new Texture2D(592, 144);
+		
+		FileStream fs = new FileStream("Assets/Images/cannonballs" + this.ballsAvailable[GameMaster.currentScene] + ".png", FileMode.Open, FileAccess.Read);
+		byte[] imageData = new byte[fs.Length];
+		fs.Read(imageData, 0, (int) fs.Length);
+		texture.LoadImage(imageData);
+
+		GameMaster.imageBalls.texture = texture;
+
 	}
 
 
@@ -65,15 +75,12 @@ public class Player {
 	public void setLabels(Text scoreText, Text nameText){
 		this.scoreText = scoreText;
 		this.nameText = nameText;
-		//this.ballsText = ballsText;
 
 		this.scoreText.text = "Score: " + score[GameMaster.currentScene].ToString ();
 		this.nameText.text = name;
-		//this.ballsText.text = "Balls left: " + ballsAvailable[GameMaster.currentScene].ToString();
 
 		this.scoreText.enabled = false;
 		this.nameText.enabled = false;
-		//this.ballsText.enabled = false;
 	}
 
 

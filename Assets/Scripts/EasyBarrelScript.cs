@@ -4,6 +4,7 @@ using System.Collections;
 public class EasyBarrelScript : MonoBehaviour {
 
 	private Easy barrel;
+	private AudioSource[] sounds;
 
 	// Use this for initialization
 	void Start () {
@@ -11,7 +12,9 @@ public class EasyBarrelScript : MonoBehaviour {
 		//barrel = new Easy(this.gameObject, explosion);
 
 		barrel = this.gameObject.AddComponent<Easy>() as Easy;
-		barrel.construct (this.gameObject, explosion);
+		sounds = GetComponents<AudioSource> ();
+		barrel.construct (this.gameObject, explosion, sounds[1]);
+
 	}
 	
 	// Update is called once per frame
@@ -26,6 +29,12 @@ public class EasyBarrelScript : MonoBehaviour {
 	void OnCollisionEnter(Collision col){
 		GameObject collidedWith = col.gameObject;
 		barrel.addForce (collidedWith);
+
+		if (col.gameObject.CompareTag ("barrel") && (GameMaster.getPlayingPlayer().getBallsAvailable() != 4))
+			sounds [2].Play ();
+		
+		if (col.gameObject.CompareTag ("floor"))
+			sounds [0].Play ();
 	}
 	
 }

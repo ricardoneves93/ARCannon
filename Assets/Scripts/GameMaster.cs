@@ -13,6 +13,7 @@ public class GameMaster : MonoBehaviour {
 	public static int resultPlayer2 = 0;
 	public static int levelTime = 0;
 	public static Text result;
+	public static RawImage imageBalls;
 	public static string[] scenes;
 	public static bool isChangingLevel = false;
 	public static List<Barrel> barrels = new List<Barrel> ();
@@ -46,6 +47,7 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public static void changePlayersTurns() {
+		Debug.Log("Pilas de niveis");
 		player1.changeTurn ();
 		player2.changeTurn ();
 		if (GameMaster.levelTime == 0) {

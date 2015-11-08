@@ -4,12 +4,14 @@ using System.Collections;
 public class MediumBarrelScript : MonoBehaviour {
 
 	private Medium barrel;
+	private AudioSource[] sounds;
 
 	// Use this for initialization
 	void Start () {
 		GameObject explosion = this.gameObject.transform.FindChild ("Explosion").gameObject;
 		barrel = this.gameObject.AddComponent<Medium>() as Medium;
-		barrel.construct (this.gameObject, explosion);
+		sounds = GetComponents<AudioSource> ();
+		barrel.construct (this.gameObject, explosion, sounds[1]);
 	}
 	
 	// Update is called once per frame
@@ -24,5 +26,11 @@ public class MediumBarrelScript : MonoBehaviour {
 	void OnCollisionEnter(Collision col){
 		GameObject collidedWith = col.gameObject;
 		barrel.addForce (collidedWith);
+
+		if (col.gameObject.CompareTag ("barrel") && (GameMaster.getPlayingPlayer().getBallsAvailable() != 4))
+			sounds [2].Play ();
+
+		if (col.gameObject.CompareTag ("floor"))
+			sounds [0].Play ();
 	}
 }

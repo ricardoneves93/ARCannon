@@ -5,6 +5,7 @@ using System.Collections;
 public abstract class Barrel : MonoBehaviour{
 	protected GameObject barrel;
 	protected GameObject explosion;
+	protected AudioSource explosionSound;
 	protected bool active;
 	protected float forceAcc;
 	protected float forceLimit;
@@ -12,7 +13,7 @@ public abstract class Barrel : MonoBehaviour{
 	protected bool played;
 	protected bool isMoving;
 	
-	public virtual void construct (GameObject gameObject, GameObject explosion){}
+	public virtual void construct (GameObject gameObject, GameObject explosion, AudioSource explosionSound){}
 
 	private void desactivateObject() {
 	
@@ -20,11 +21,11 @@ public abstract class Barrel : MonoBehaviour{
 	}
 
 	public void explodeObject() {
+		this.explosionSound.Play ();
 		this.active = false;
 		explosion.GetComponent<ParticleSystem> ().enableEmission = true;
 		explosion.GetComponent<ParticleSystem> ().Play ();
 		// Give the score to the player that is playing
-		Debug.Log ("Gosto de arroz no cu");
 		GameMaster.getPlayingPlayer().addScore(this.scoreValue);
 		Invoke("desactivateObject", 0.8f);
 	}
@@ -101,9 +102,10 @@ public abstract class Barrel : MonoBehaviour{
 public class Easy : Barrel {
 	
 	/*calls allways parent constructor*/
-	public override void construct(GameObject gameObject, GameObject explosion){
+	public override void construct(GameObject gameObject, GameObject explosion, AudioSource explosionSound){
 		this.barrel = gameObject;
 		this.explosion = explosion;
+		this.explosionSound = explosionSound;
 		this.forceAcc = 0.0F;
 		this.active = true;
 		this.played = false;
@@ -117,9 +119,10 @@ public class Easy : Barrel {
 public class Medium : Barrel {
 	
 	/*calls allways parent constructor*/
-	public override void construct(GameObject gameObject, GameObject explosion) {
+	public override void construct(GameObject gameObject, GameObject explosion, AudioSource explosionSound) {
 		this.barrel = gameObject;
 		this.explosion = explosion;
+		this.explosionSound = explosionSound;
 		this.forceAcc = 0.0F;
 		this.active = true;
 		this.played = false;
@@ -133,9 +136,10 @@ public class Medium : Barrel {
 public class Hard : Barrel {
 	
 	/*calls allways parent constructor*/
-	public override void construct(GameObject gameObject, GameObject explosion) {
+	public override void construct(GameObject gameObject, GameObject explosion, AudioSource explosionSound) {
 		this.barrel = gameObject;
 		this.explosion = explosion;
+		this.explosionSound = explosionSound;
 		this.forceAcc = 0.0F;
 		this.active = true;
 		this.played = false;
