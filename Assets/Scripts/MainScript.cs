@@ -10,6 +10,7 @@ public class MainScript : MonoBehaviour {
 	public Text result;
 	public RawImage imageBalls;
 	public GameObject[] levels;
+	public Texture[] ballsTexture;
 
 	string[] scenes = {"Level1", "Level2", "Level3", "Level4", "Level5"};
 
@@ -19,6 +20,7 @@ public class MainScript : MonoBehaviour {
 		GameMaster.result = this.result;
 		GameMaster.scenes = this.scenes;
 		GameMaster.levels = this.levels;
+		GameMaster.ballsTexture = this.ballsTexture;
 		GameMaster.imageBalls = this.imageBalls;
 		GameMaster.player1.setLabels (score1, player1);
 		GameMaster.player2.setLabels (score2, player2);
@@ -45,26 +47,12 @@ public class MainScript : MonoBehaviour {
 			if (GameMaster.nothingMoving () && GameMaster.noBalls()) {
 				GameMaster.changePlayersTurns ();
 				// reset to first balls image
-				Texture2D texture = new Texture2D(592, 144);
-				
-				FileStream fs = new FileStream("Assets/Images/cannonballs4.png", FileMode.Open, FileAccess.Read);
-				byte[] imageData = new byte[fs.Length];
-				fs.Read(imageData, 0, (int) fs.Length);
-				texture.LoadImage(imageData);
-				
-				GameMaster.imageBalls.texture = texture;
+				GameMaster.imageBalls.texture = GameMaster.ballsTexture[4];
 			}
 		} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {
 			GameMaster.changePlayersTurns ();
 			// reset to first balls image
-			Texture2D texture = new Texture2D(592, 144);
-			
-			FileStream fs = new FileStream("Assets/Images/cannonballs4.png", FileMode.Open, FileAccess.Read);
-			byte[] imageData = new byte[fs.Length];
-			fs.Read(imageData, 0, (int) fs.Length);
-			texture.LoadImage(imageData);
-			
-			GameMaster.imageBalls.texture = texture;
+			GameMaster.imageBalls.texture = GameMaster.ballsTexture[4];
 		}
 	}
 }

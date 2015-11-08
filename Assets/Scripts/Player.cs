@@ -48,14 +48,7 @@ public class Player {
 	public void removePlayerBall() {
 		this.ballsAvailable[GameMaster.currentScene]--;
 
-		Texture2D texture = new Texture2D(592, 144);
-		
-		FileStream fs = new FileStream("Assets/Images/cannonballs" + this.ballsAvailable[GameMaster.currentScene] + ".png", FileMode.Open, FileAccess.Read);
-		byte[] imageData = new byte[fs.Length];
-		fs.Read(imageData, 0, (int) fs.Length);
-		texture.LoadImage(imageData);
-
-		GameMaster.imageBalls.texture = texture;
+		GameMaster.imageBalls.texture = GameMaster.ballsTexture[this.ballsAvailable[GameMaster.currentScene]];
 
 	}
 

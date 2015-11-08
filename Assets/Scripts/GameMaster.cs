@@ -17,6 +17,7 @@ public class GameMaster : MonoBehaviour {
 	public static bool isChangingLevel = false;
 	public static List<Barrel> barrels = new List<Barrel> ();
 	public static GameObject[] levels;
+	public static Texture[] ballsTexture;
 
 	// Create the players
 	public static Player player1 = new Player(ballsAllowed, "Ricardo");
@@ -58,7 +59,6 @@ public class GameMaster : MonoBehaviour {
 			Destroy (GameObject.FindGameObjectWithTag ("target"));
 			GameMaster.isChangingLevel = true;
 			Instantiate (levels[GameMaster.currentScene]);
-			//Instantiate (AssetDatabase.LoadAssetAtPath ("Assets/Prefabs/" + GameMaster.scenes [GameMaster.currentScene] + ".prefab", typeof(GameObject)));
 			resetCannon();
 			eraseCannonBalls();
 			GameMaster.isChangingLevel = false;
@@ -71,7 +71,6 @@ public class GameMaster : MonoBehaviour {
 			Destroy(GameObject.FindGameObjectWithTag("target"));
 			GameMaster.isChangingLevel = true;
 			Instantiate (levels[GameMaster.currentScene]);
-			//Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
 			resetCannon();
 			eraseCannonBalls();
 			GameMaster.isChangingLevel = false;

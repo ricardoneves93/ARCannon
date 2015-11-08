@@ -1,3 +1,5 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-32bit-1-8016
+Pipe name: \\.\pipe\UnityShaderCompiler-32bit-1-10200
 Cmd: getPlatforms
+Cmd: compileSnippet
+  api=4 type=0 insize=8192 outsize=6994 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON pd= ok=1
