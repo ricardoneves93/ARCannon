@@ -19,6 +19,16 @@ public abstract class Barrel : MonoBehaviour{
 		GameObject.Destroy(barrel.transform.parent.gameObject);
 	}
 
+	public void explodeObject() {
+		this.active = false;
+		explosion.GetComponent<ParticleSystem> ().enableEmission = true;
+		explosion.GetComponent<ParticleSystem> ().Play ();
+		// Give the score to the player that is playing
+		Debug.Log ("Gosto de arroz no cu");
+		GameMaster.getPlayingPlayer().addScore(this.scoreValue);
+		Invoke("desactivateObject", 0.8f);
+	}
+
 	public void addForce(GameObject collidedWith) {
 		// Force calculations
 								// Velocity of the barrel						// Velocity of the object that collided
@@ -43,12 +53,7 @@ public abstract class Barrel : MonoBehaviour{
 		
 
 		if (checkLimit () && this.active) {
-			explosion.GetComponent<ParticleSystem> ().enableEmission = true;
-			explosion.GetComponent<ParticleSystem> ().Play ();
-			this.active = false;
-			// Give the score to the player that is playing
-			GameMaster.getPlayingPlayer().addScore(this.scoreValue);
-			Invoke("desactivateObject", 0.8f);
+			explodeObject();
 		}
 
 	}

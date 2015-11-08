@@ -49,7 +49,6 @@ public class GameMaster : MonoBehaviour {
 		player1.changeTurn ();
 		player2.changeTurn ();
 		if (GameMaster.levelTime == 0) {
-			Debug.Log ("Pilas0");
 			GameMaster.levelTime = 1;
 			// reset barrels list
 			GameMaster.barrels = new List<Barrel> ();
@@ -57,9 +56,10 @@ public class GameMaster : MonoBehaviour {
 			Destroy (GameObject.FindGameObjectWithTag ("target"));
 			GameMaster.isChangingLevel = true;
 			Instantiate (AssetDatabase.LoadAssetAtPath ("Assets/Prefabs/" + GameMaster.scenes [GameMaster.currentScene] + ".prefab", typeof(GameObject)));
+			resetCannon();
+			eraseCannonBalls();
 			GameMaster.isChangingLevel = false;
 		} else {
-			Debug.Log("Pilas1");
 			GameMaster.currentScene++;
 			GameMaster.levelTime = 0;
 			// reset barrels list
@@ -68,11 +68,11 @@ public class GameMaster : MonoBehaviour {
 			Destroy(GameObject.FindGameObjectWithTag("target"));
 			GameMaster.isChangingLevel = true;
 			Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/" + GameMaster.scenes[GameMaster.currentScene]+ ".prefab", typeof(GameObject)));
+			resetCannon();
+			eraseCannonBalls();
 			GameMaster.isChangingLevel = false;
+			updateResultText (GameMaster.player1.getLastScore (), GameMaster.player2.getLastScore ());
 		}
-			
-		
-		updateResultText (GameMaster.player1.getScore (), GameMaster.player2.getScore ());
 	}
 
 	// Called everytime player shoots
@@ -95,6 +95,15 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	private static void updateResultText(int score1, int score2) {
+		if (score1 > score2)
+			GameMaster.resultPlayer1 ++;
+		else if (score2 > score1)
+			GameMaster.resultPlayer2 ++;
+		else if(GameMaster.currentScene != 0){
+			GameMaster.resultPlayer1 ++;
+			GameMaster.resultPlayer2 ++;
+		}
+
 		GameMaster.result.text = resultPlayer1.ToString () + "-" + resultPlayer2.ToString ();
 	}
 
@@ -102,12 +111,33 @@ public class GameMaster : MonoBehaviour {
 		for (int i = 0; i < GameMaster.barrels.Count; i++) {
 			if(GameMaster.barrels[i].getActive()){
 				if(GameMaster.barrels[i].getIsMoving()){
-					Debug.Log("Moving object" + GameMaster.barrels[i].gameObject.name);
 					return false;
 				}
 			}
 		}
+
 		return true;
+	}
+
+	public static bool noBalls() {
+		GameObject[] balls = GameObject.FindGameObjectsWithTag ("cannonBall");
+
+		for (int i = 0; i < balls.Length ; i++) {
+			if(!balls[i].GetComponent<Rigidbody>().IsSleeping())
+				return false;
+		}
+		return true;
+	}
+
+	private static void resetCannon() {
+		GameObject cannon = GameObject.FindGameObjectWithTag ("cannon");
+		cannon.transform.localRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+		GameObject barrel = cannon.transform.FindChild ("father_barrel").gameObject;
+		barrel.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+	}
+
+	private static void eraseCannonBalls() {
+		Destroy(GameObject.FindGameObjectWithTag("cannonBall"));
 	}
 
 }

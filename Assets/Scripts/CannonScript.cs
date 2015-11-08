@@ -27,20 +27,20 @@ public class CannonScript : MonoBehaviour {
 	void Update() {
 		
 		if(CnInputManager.GetButton("Jump") && Time.time > fireDelay) {
-			
-			fireDelay = Time.time + rateOfFire;
-			
-			GameObject clone = (GameObject) Instantiate(cannonBall, new Vector3(endPiece.transform.position.x, endPiece.transform.position.y, endPiece.transform.position.z), cannonBall.transform.rotation);
-			
-			
-			Vector3 dir = aim.transform.forward;
-			Rigidbody rb = clone.GetComponent<Rigidbody>();
-			rb.velocity = new Vector3(dir.x * speed, dir.y * speed, dir.z * speed);
 
-			// Removes a ball from player that is playing
-			GameMaster.RemovePlayerBall();
-
-			Debug.Log("Barris: " + GameMaster.getActiveBarrels());
+			if(GameMaster.getPlayingPlayer().getBallsAvailable() > 0){
+				fireDelay = Time.time + rateOfFire;
+				
+				GameObject clone = (GameObject) Instantiate(cannonBall, new Vector3(endPiece.transform.position.x, endPiece.transform.position.y, endPiece.transform.position.z), cannonBall.transform.rotation);
+				
+				
+				Vector3 dir = aim.transform.forward;
+				Rigidbody rb = clone.GetComponent<Rigidbody>();
+				rb.velocity = new Vector3(dir.x * speed, dir.y * speed, dir.z * speed);
+				
+				// Removes a ball from player that is playing
+				GameMaster.RemovePlayerBall();
+			}
 			
 		}
 

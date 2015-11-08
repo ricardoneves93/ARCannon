@@ -38,7 +38,7 @@ public class MainScript : MonoBehaviour {
 
 		// If no balls available
 		if (player.getBallsAvailable () == 0 && !GameMaster.isChangingLevel) {
-			if (GameMaster.nothingMoving ()) {
+			if (GameMaster.nothingMoving () && GameMaster.noBalls()) {
 				GameMaster.changePlayersTurns ();
 			}
 		} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {

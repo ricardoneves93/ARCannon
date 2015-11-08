@@ -15,6 +15,10 @@ public class MediumBarrelScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		barrel.setIsMoving(!this.GetComponent<Rigidbody> ().IsSleeping ());
+
+		if ((this.transform.position.y < GameObject.Find ("MainPlane").transform.position.y) && barrel.getActive()) {
+			barrel.explodeObject ();
+		}
 	}
 
 	void OnCollisionEnter(Collision col){

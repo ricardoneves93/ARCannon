@@ -39,6 +39,8 @@ public class Player {
 			//this.ballsText.enabled = true;
 		}
 
+		this.scoreText.text = "Score: 0";
+
 		this.isTurn = !this.isTurn;
 	}
 
@@ -78,6 +80,12 @@ public class Player {
 	/*Getters*/
 	public int getScore() {
 		return this.score[GameMaster.currentScene];
+	}
+
+	public int getLastScore(){
+		if (GameMaster.currentScene <= 0)
+			return 0;
+		return this.score[GameMaster.currentScene - 1];
 	}
 
 	public bool getIsWinner() {
