@@ -65,7 +65,7 @@ public class GameMaster : MonoBehaviour {
 			if(GameMaster.getActiveBarrels () == 0)
 				GameMaster.getPlayingPlayer().addScore (GameMaster.getPlayingPlayer().getBallsAvailable() * 10);
 
-			if(GameMaster.currentScene < 4){
+			if(GameMaster.currentScene <= 4){
 				player1.WaitAndThen(0);
 			}
 

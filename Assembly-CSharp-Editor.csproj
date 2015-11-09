@@ -50,6 +50,7 @@
      <Compile Include="Assets\Vuforia\Editor\Scripts\Unzipper\SharpZipLibUnzipper.cs" />
      <None Include="Assets\Standard Assets\water well\readme.txt" />
      <None Include="Assets\coastal_gun_battery\coastal_gun_battery_notes.txt" />
+     <None Include="Assets\StreamingAssets\QCAR\Last.xml" />
      <None Include="Assets\Breakable Glass\Shaders\SimpleGlass.shader" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
