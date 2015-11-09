@@ -20,18 +20,23 @@ public class GameMaster : MonoBehaviour {
 	public static Texture[] ballsTexture;
 
 	// Create the players
-	public static Player player1 = new Player(ballsAllowed, "Ricardo");
-	public static Player player2 = new Player(ballsAllowed, "Daniel");
+	public static Player player1;
+	public static Player player2;
 	
 
 	void Awake()
 	{
-
 		if(GM != null)
 			GameObject.Destroy(GM);
 		else
 			GM = this;
+
+		player1 = gameObject.AddComponent<Player> () as Player;
+		player2 = gameObject.AddComponent<Player> () as Player;
 		
+		player1.StartPlayer (ballsAllowed, "Ricardo");
+		player2.StartPlayer (ballsAllowed, "Daniel");
+
 		DontDestroyOnLoad(this);
 	}
 
@@ -48,34 +53,38 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public static void changePlayersTurns() {
-		Debug.Log("Pilas de niveis");
-		player1.changeTurn ();
-		player2.changeTurn ();
 		if (GameMaster.levelTime == 0) {
 			GameMaster.levelTime = 1;
-			// reset barrels list
-			GameMaster.barrels = new List<Barrel> ();
-			// reset Scene
-			Destroy (GameObject.FindGameObjectWithTag ("target"));
 			GameMaster.isChangingLevel = true;
-			Instantiate (levels[GameMaster.currentScene]);
-			resetCannon();
-			eraseCannonBalls();
-			GameMaster.isChangingLevel = false;
+			Debug.Log ("START WAITING");
+			player1.WaitAndThen();
+
+
 		} else {
 			GameMaster.currentScene++;
 			GameMaster.levelTime = 0;
-			// reset barrels list
-			GameMaster.barrels = new List<Barrel> ();
-			// reset Scene
-			Destroy(GameObject.FindGameObjectWithTag("target"));
+
+			Debug.Log ("START WAITING");
 			GameMaster.isChangingLevel = true;
-			Instantiate (levels[GameMaster.currentScene]);
-			resetCannon();
-			eraseCannonBalls();
-			GameMaster.isChangingLevel = false;
+			player1.WaitAndThen();
+
 			updateResultText (GameMaster.player1.getLastScore (), GameMaster.player2.getLastScore ());
 		}
+	}
+
+	public static void ChangeLevelInternal()
+	{
+		Debug.Log ("CHANGED LEVEL");
+		// reset barrels list
+		GameMaster.barrels = new List<Barrel> ();
+		// reset Scene
+		Destroy (GameObject.FindGameObjectWithTag ("target"));
+		Instantiate (levels[GameMaster.currentScene]);
+		resetCannon();
+		eraseCannonBalls();
+		player1.changeTurn ();
+		player2.changeTurn ();
+		GameMaster.isChangingLevel = false;
 	}
 
 	// Called everytime player shoots

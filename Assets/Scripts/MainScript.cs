@@ -16,6 +16,7 @@ public class MainScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameObject.AddComponent<GameMaster> ();
 
 		GameMaster.result = this.result;
 		GameMaster.scenes = this.scenes;
@@ -44,15 +45,18 @@ public class MainScript : MonoBehaviour {
 
 		// If no balls available
 		if (player.getBallsAvailable () == 0 && !GameMaster.isChangingLevel) {
-			if (GameMaster.nothingMoving () && GameMaster.noBalls()) {
+			if (GameMaster.nothingMoving () && GameMaster.noBalls ()) {
 				GameMaster.changePlayersTurns ();
 				// reset to first balls image
-				GameMaster.imageBalls.texture = GameMaster.ballsTexture[4];
+				GameMaster.imageBalls.texture = GameMaster.ballsTexture [4];
 			}
 		} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {
-			GameMaster.changePlayersTurns ();
-			// reset to first balls image
-			GameMaster.imageBalls.texture = GameMaster.ballsTexture[4];
+			if (GameMaster.nothingMoving ()){
+				GameMaster.changePlayersTurns ();
+				// reset to first balls image
+				Debug.Log ("Nao devia entrar aqui barris!");
+				GameMaster.imageBalls.texture = GameMaster.ballsTexture [4];
+			}
 		}
 	}
 }

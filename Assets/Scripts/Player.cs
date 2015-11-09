@@ -3,16 +3,16 @@ using UnityEngine.UI;
 using System.Collections;
 using System.IO;
 
-public class Player {
+public class Player : MonoBehaviour {
 	private int[] score = new int[5];
-	private string name;
+	private string playerName;
 	private bool isWinner;
 	private bool isTurn;
 	private int[] ballsAvailable = new int[5];
 	public Text scoreText;
 	public Text nameText;
 
-	public Player(int ballsAvailable, string name){
+	public void StartPlayer(int ballsAvailable, string name){
 
 		for (int i = 0; i < score.Length; i++)
 			score [i] = 0;
@@ -21,7 +21,7 @@ public class Player {
 			this.ballsAvailable [i] = ballsAvailable;
 
 		this.isWinner = false;
-		this.name = name;
+		this.playerName = name;
 	}
 
 	public void addScore(int score){
@@ -33,11 +33,9 @@ public class Player {
 		if (this.isTurn) {
 			this.scoreText.enabled = false;
 			this.nameText.enabled = false;
-			//this.ballsText.enabled = false;
 		} else {
 			this.scoreText.enabled = true;
 			this.nameText.enabled = true;
-			//this.ballsText.enabled = true;
 		}
 
 		this.scoreText.text = "Score: 0";
@@ -70,7 +68,7 @@ public class Player {
 		this.nameText = nameText;
 
 		this.scoreText.text = "Score: " + score[GameMaster.currentScene].ToString ();
-		this.nameText.text = name;
+		this.nameText.text = playerName;
 
 		this.scoreText.enabled = false;
 		this.nameText.enabled = false;
@@ -97,6 +95,19 @@ public class Player {
 	}
 
 	public int getBallsAvailable() {
+		Debug.Log ("Pilas gordas: " + GameMaster.currentScene);
 		return this.ballsAvailable[GameMaster.currentScene];
+	}
+
+	public void WaitAndThen()
+	{
+		StartCoroutine (AndThen ());
+	}
+
+	IEnumerator AndThen()
+	{
+		yield return new WaitForSeconds (5f);
+
+		GameMaster.ChangeLevelInternal ();
 	}
 }
