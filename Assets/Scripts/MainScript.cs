@@ -50,23 +50,20 @@ public class MainScript : MonoBehaviour {
 	void Update () {
 		Player player;
 
-		if (GameMaster.player1.getIsTurn ())
-			player = GameMaster.player1;
-		else
-			player = GameMaster.player2;
-
-
-
 		if (GameMaster.currentScene <= 4) {
+			if (GameMaster.player1.getIsTurn ())
+				player = GameMaster.player1;
+			else
+				player = GameMaster.player2;
+
+	
 			// If no balls available
 			if (player.getBallsAvailable () == 0 && !GameMaster.isChangingLevel) {
 				if (GameMaster.nothingMoving () && GameMaster.noBalls ()) {
 					GameMaster.changePlayersTurns ();
 				}
 			} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {
-				if (GameMaster.nothingMoving ()){
 					GameMaster.changePlayersTurns ();
-				}
 			}
 		}
 

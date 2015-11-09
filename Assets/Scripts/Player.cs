@@ -178,6 +178,8 @@ public class Player : MonoBehaviour {
 		}
 
 			yield return new WaitForSeconds (3f);
+
+
 		switch (winner) {
 		//  winner is player1
 		case 0:
@@ -195,7 +197,8 @@ public class Player : MonoBehaviour {
 			break;
 		}
 
-			Application.LoadLevel("MenuScene");
+			//Application.LoadLevel("MenuScene");
+			Application.Quit();
 		
 	
 	}

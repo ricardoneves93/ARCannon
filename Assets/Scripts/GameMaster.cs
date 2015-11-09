@@ -64,7 +64,10 @@ public class GameMaster : MonoBehaviour {
 			GameMaster.isChangingLevel = true;
 			if(GameMaster.getActiveBarrels () == 0)
 				GameMaster.getPlayingPlayer().addScore (GameMaster.getPlayingPlayer().getBallsAvailable() * 10);
-			player1.WaitAndThen(0);
+
+			if(GameMaster.currentScene < 4){
+				player1.WaitAndThen(0);
+			}
 
 
 		} else {
@@ -72,8 +75,10 @@ public class GameMaster : MonoBehaviour {
 			GameMaster.isChangingLevel = true;
 			if(GameMaster.getActiveBarrels () == 0)
 				GameMaster.getPlayingPlayer().addScore (GameMaster.getPlayingPlayer().getBallsAvailable() * 10);
-			if(GameMaster.currentScene < 4)
+			if(GameMaster.currentScene < 4){
 				GameMaster.currentScene++;
+				player1.WaitAndThen(1);
+			}
 			else {
 				// Game ends
 				if(GameMaster.resultPlayer1 > GameMaster.resultPlayer2)
@@ -83,7 +88,6 @@ public class GameMaster : MonoBehaviour {
 				else if(GameMaster.resultPlayer1 == GameMaster.resultPlayer2)
 					GameMaster.player1.WaitWinnerScreen(2);
 			}
-			player1.WaitAndThen(1);
 
 		}
 	}
@@ -109,13 +113,6 @@ public class GameMaster : MonoBehaviour {
 
 	}
 
-	// hides splashscreen
-	/*
-	public static void hideSplashScreen (){
-		GameMaster.levelsScreens[currentScene].enabled = false;
-		player1.WaitAndThen(1);
-	}
-	*/
 
 	// Called everytime player shoots
 	public static void RemovePlayerBall(){
