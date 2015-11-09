@@ -29,7 +29,7 @@ public class CannonScript : MonoBehaviour {
 		// Fire cannon
 		if(CnInputManager.GetButton("Jump") && Time.time > fireDelay) {
 
-			if(GameMaster.getPlayingPlayer().getBallsAvailable() > 0){
+			if(GameMaster.getPlayingPlayer().getBallsAvailable() > 0 && !GameMaster.isChangingLevel){
 				fireDelay = Time.time + rateOfFire;
 				
 				GameObject clone = (GameObject) Instantiate(cannonBall, new Vector3(endPiece.transform.position.x, endPiece.transform.position.y, endPiece.transform.position.z), cannonBall.transform.rotation);
@@ -50,41 +50,45 @@ public class CannonScript : MonoBehaviour {
 		// Computer controls
 		float verticalRotation = Input.GetAxis("Vertical");
 
-		
-		if(barrel.transform.localEulerAngles.x < 315 && barrel.transform.localEulerAngles.x >= 310)
-			barrel.transform.localEulerAngles = new Vector3(315, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
-		
-		
-		if(barrel.transform.localEulerAngles.x >= 0 && barrel.transform.localEulerAngles.x <= 5)
-			barrel.transform.localEulerAngles = new Vector3(0, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
-		
-		
-		if(barrel.transform.localEulerAngles.x == 0 || (barrel.transform.localEulerAngles.x >= 315 && barrel.transform.localEulerAngles.x <= 360)) {
-			barrel.transform.Rotate(new Vector3(-verticalRotation, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z));
+		if (!GameMaster.isChangingLevel) {
+			if(barrel.transform.localEulerAngles.x < 315 && barrel.transform.localEulerAngles.x >= 310)
+				barrel.transform.localEulerAngles = new Vector3(315, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
+			
+			
+			if(barrel.transform.localEulerAngles.x >= 0 && barrel.transform.localEulerAngles.x <= 5)
+				barrel.transform.localEulerAngles = new Vector3(0, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
+			
+			
+			if(barrel.transform.localEulerAngles.x == 0 || (barrel.transform.localEulerAngles.x >= 315 && barrel.transform.localEulerAngles.x <= 360)) {
+				barrel.transform.Rotate(new Vector3(-verticalRotation, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z));
+			}
 		}
 
 
 
-
-		/* Mobile controls */
-		float verticalMobileRotation = CnInputManager.GetAxis ("Vertical");
-
-		if(barrel.transform.localEulerAngles.x < 315 && barrel.transform.localEulerAngles.x >= 310)
-			barrel.transform.localEulerAngles = new Vector3(315, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
-		
-		
-		if(barrel.transform.localEulerAngles.x >= 0 && barrel.transform.localEulerAngles.x <= 5)
-			barrel.transform.localEulerAngles = new Vector3(0, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
-		
-		
-		if(barrel.transform.localEulerAngles.x == 0 || (barrel.transform.localEulerAngles.x >= 315 && barrel.transform.localEulerAngles.x <= 360)) {
-			barrel.transform.Rotate(new Vector3(-verticalMobileRotation, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z));
+		if (!GameMaster.isChangingLevel) {
+			/* Mobile controls */
+			float verticalMobileRotation = CnInputManager.GetAxis ("Vertical");
+			
+			if(barrel.transform.localEulerAngles.x < 315 && barrel.transform.localEulerAngles.x >= 310)
+				barrel.transform.localEulerAngles = new Vector3(315, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
+			
+			
+			if(barrel.transform.localEulerAngles.x >= 0 && barrel.transform.localEulerAngles.x <= 5)
+				barrel.transform.localEulerAngles = new Vector3(0, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z);
+			
+			
+			if(barrel.transform.localEulerAngles.x == 0 || (barrel.transform.localEulerAngles.x >= 315 && barrel.transform.localEulerAngles.x <= 360)) {
+				barrel.transform.Rotate(new Vector3(-verticalMobileRotation, barrel.transform.localEulerAngles.y, barrel.transform.localEulerAngles.z));
+			}
+			
+			
+			float horizontalMobileRotation = CnInputManager.GetAxis ("Horizontal");
+			
+			transform.Rotate(new Vector3(transform.localEulerAngles.x, horizontalMobileRotation *  horizontalRotationSpeed, transform.localEulerAngles.z));
 		}
 
 
-		float horizontalMobileRotation = CnInputManager.GetAxis ("Horizontal");
-
-		transform.Rotate(new Vector3(transform.localEulerAngles.x, horizontalMobileRotation *  horizontalRotationSpeed, transform.localEulerAngles.z));
 
 		
 	}

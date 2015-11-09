@@ -11,6 +11,13 @@ public class MainScript : MonoBehaviour {
 	public RawImage imageBalls;
 	public GameObject[] levels;
 	public Texture[] ballsTexture;
+	public RawImage player1Turn;
+	public RawImage player2Turn;
+	public RawImage[] levelsScreens;
+	public RawImage player1Winner;
+	public RawImage player2Winner;
+	public RawImage playersDraw;
+
 
 	string[] scenes = {"Level1", "Level2", "Level3", "Level4", "Level5"};
 
@@ -18,6 +25,12 @@ public class MainScript : MonoBehaviour {
 	void Start () {
 		gameObject.AddComponent<GameMaster> ();
 
+		GameMaster.player1Turn = this.player1Turn;
+		GameMaster.player2Turn = this.player2Turn;
+		GameMaster.player1Winner = this.player1Winner;
+		GameMaster.player2Winner = this.player2Winner;
+		GameMaster.playersDraw = this.playersDraw;
+		GameMaster.levelsScreens = this.levelsScreens;
 		GameMaster.result = this.result;
 		GameMaster.scenes = this.scenes;
 		GameMaster.levels = this.levels;
@@ -25,9 +38,11 @@ public class MainScript : MonoBehaviour {
 		GameMaster.imageBalls = this.imageBalls;
 		GameMaster.player1.setLabels (score1, player1);
 		GameMaster.player2.setLabels (score2, player2);
-
+		
 		// set players turns
 		GameMaster.setInitialTurns ();
+		
+		GameMaster.player1.WaitSplash (0);
 
 	}
 	
@@ -42,21 +57,18 @@ public class MainScript : MonoBehaviour {
 
 
 
-
-		// If no balls available
-		if (player.getBallsAvailable () == 0 && !GameMaster.isChangingLevel) {
-			if (GameMaster.nothingMoving () && GameMaster.noBalls ()) {
-				GameMaster.changePlayersTurns ();
-				// reset to first balls image
-				GameMaster.imageBalls.texture = GameMaster.ballsTexture [4];
-			}
-		} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {
-			if (GameMaster.nothingMoving ()){
-				GameMaster.changePlayersTurns ();
-				// reset to first balls image
-				Debug.Log ("Nao devia entrar aqui barris!");
-				GameMaster.imageBalls.texture = GameMaster.ballsTexture [4];
+		if (GameMaster.currentScene <= 4) {
+			// If no balls available
+			if (player.getBallsAvailable () == 0 && !GameMaster.isChangingLevel) {
+				if (GameMaster.nothingMoving () && GameMaster.noBalls ()) {
+					GameMaster.changePlayersTurns ();
+				}
+			} else if (GameMaster.getActiveBarrels () == 0 && !GameMaster.isChangingLevel) {
+				if (GameMaster.nothingMoving ()){
+					GameMaster.changePlayersTurns ();
+				}
 			}
 		}
+
 	}
 }

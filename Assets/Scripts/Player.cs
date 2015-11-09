@@ -95,19 +95,108 @@ public class Player : MonoBehaviour {
 	}
 
 	public int getBallsAvailable() {
-		Debug.Log ("Pilas gordas: " + GameMaster.currentScene);
 		return this.ballsAvailable[GameMaster.currentScene];
 	}
 
-	public void WaitAndThen()
-	{
-		StartCoroutine (AndThen ());
+	public void WaitAndThen(int mode) {
+		StartCoroutine (AndThen (mode));
 	}
 
-	IEnumerator AndThen()
-	{
-		yield return new WaitForSeconds (5f);
+	private IEnumerator AndThen(int mode) {
 
-		GameMaster.ChangeLevelInternal ();
+		if (mode == 0 || mode == 3)
+			GameMaster.player2Turn.enabled = true;
+		else if (mode == 1) {
+			WaitSplash (1);
+		} else if (mode == 2 || mode == 4) {
+			GameMaster.player1Turn.enabled = true;
+		}
+
+		yield return new WaitForSeconds (2f);
+
+		if (mode == 0) {
+			GameMaster.ChangeLevelInternal (mode);
+			GameMaster.player2Turn.enabled = false;
+		} else if (mode == 2) {
+			GameMaster.ChangeLevelInternal (mode);
+			GameMaster.player1Turn.enabled = false;
+		} else if (mode == 3) {
+			GameMaster.player2Turn.enabled = false;
+		} else if (mode == 4) {
+			GameMaster.player1Turn.enabled = false;
+		}
+
+
+	}
+
+	public void WaitSplash(int mode) {
+		StartCoroutine (AndThen1 (mode));
+	}
+	
+	private IEnumerator AndThen1(int mode) {
+
+		GameMaster.updateResultText (GameMaster.player1.getLastScore (), GameMaster.player2.getLastScore ());
+
+		GameMaster.levelsScreens[GameMaster.currentScene].enabled = true;
+
+		yield return new WaitForSeconds (2f);
+
+		GameMaster.levelsScreens[GameMaster.currentScene].enabled = false;
+
+		if (mode == 1) {
+			WaitAndThen (2);
+		} else {
+			WaitAndThen (4);
+		}
+
+
+	}
+
+	public void WaitWinnerScreen(int winner) {
+		StartCoroutine (AndThenWinnerScreen (winner));
+	}
+
+	private IEnumerator AndThenWinnerScreen(int winner){
+
+		// Show winner screen
+		switch (winner) {
+
+		//  winner is player1
+		case 0:
+			GameMaster.player1Winner.enabled = true;
+			break;
+		//  winner is player2
+		case 1:
+			GameMaster.player2Winner.enabled = true;
+			break;
+		//  draw
+		case 2:
+			GameMaster.playersDraw.enabled = true;
+			break;
+		default:
+			break;
+		}
+
+			yield return new WaitForSeconds (3f);
+		switch (winner) {
+		//  winner is player1
+		case 0:
+			GameMaster.player1Winner.enabled = false;
+			break;
+		//  winner is player2
+		case 1:
+			GameMaster.player2Winner.enabled = false;
+			break;
+		//  draw
+		case 2:
+			GameMaster.playersDraw.enabled = false;
+			break;
+		default:
+			break;
+		}
+
+			Application.LoadLevel("MenuScene");
+		
+	
 	}
 }

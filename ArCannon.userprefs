@@ -1,16 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameMaster.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MenuScript.cs">
     <Files>
+      <File FileName="Assets\Scripts\BarrelClass.cs" Line="24" Column="31" />
       <File FileName="Assets\Scripts\EasyBarrelScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BarrelClass.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameMaster.cs" Line="55" Column="43" />
+      <File FileName="Assets\Scripts\GameMaster.cs" Line="84" Column="25" />
       <File FileName="Assets\Scripts\MainScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MediumBarrelScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\HardBarrelScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CannonBallScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CannonScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SplashScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MenuScript.cs" Line="8" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
